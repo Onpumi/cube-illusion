@@ -5,21 +5,23 @@ using UnityEngine.UI;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] private float _maxAllowDistanceForJump;
     [SerializeField] private bool _isFinish = false;
-    private Ball _ball;
-    private BallMover _ballMover;
     private Button _button;
     private Image _image;
     public bool IsFinish => _isFinish;
-    public Image Image => _image;
-    public event Action<Platform> OnClickButton; 
+    public event Action<Platform> OnClickButton;
+    public Layer Layer { get; private set; }
 
     private void Awake()
     {
         _button = GetComponent<Button>();
         _image = GetComponent<Image>();
         _image.alphaHitTestMinimumThreshold = 0.5f;
+    }
+
+    public void Init(Layer layer)
+    {
+        Layer = layer;
     }
     
     private void Start()

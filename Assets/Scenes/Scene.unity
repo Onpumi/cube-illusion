@@ -264,7 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &50761597
 MonoBehaviour:
@@ -399,7 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &93139063
 MonoBehaviour:
@@ -841,7 +839,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &262662847
 MonoBehaviour:
@@ -976,7 +973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &277941090
 MonoBehaviour:
@@ -1111,7 +1107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &315011538
 MonoBehaviour:
@@ -1246,7 +1241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &351070824
 MonoBehaviour:
@@ -1605,8 +1599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
-  _isFinish: 1
+  _isFinish: 0
 --- !u!114 &438686695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2149,7 +2142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &634536439
 MonoBehaviour:
@@ -2284,7 +2276,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &654879708
 MonoBehaviour:
@@ -2419,7 +2410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &665349552
 MonoBehaviour:
@@ -2613,7 +2603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &746815014
 MonoBehaviour:
@@ -2748,8 +2737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
-  _isFinish: 1
+  _isFinish: 0
 --- !u!114 &809076048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2883,8 +2871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
-  _isFinish: 1
+  _isFinish: 0
 --- !u!114 &844273901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3264,7 +3251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &913951510
 MonoBehaviour:
@@ -3571,7 +3557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &937182033
 MonoBehaviour:
@@ -3706,7 +3691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &943293543
 MonoBehaviour:
@@ -3841,7 +3825,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &1008114434
 MonoBehaviour:
@@ -3976,7 +3959,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &1015679598
 MonoBehaviour:
@@ -4463,7 +4445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!1 &1195187107
 GameObject:
@@ -5340,7 +5321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &1575548600
 MonoBehaviour:
@@ -5616,7 +5596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &1639413772
 MonoBehaviour:
@@ -6248,7 +6227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &2029069799
 MonoBehaviour:
@@ -6659,7 +6637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!1 &2104196454
 GameObject:
@@ -6712,7 +6689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &2104196457
 MonoBehaviour:
@@ -6847,7 +6823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &2127840517
 MonoBehaviour:
@@ -6982,7 +6957,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a9b99264e9ac641b2cea9df1c05f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAllowDistanceForJump: 0
   _isFinish: 0
 --- !u!114 &2145226184
 MonoBehaviour:

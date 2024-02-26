@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -5,7 +6,13 @@ public class Ball : MonoBehaviour
     [SerializeField] private Transform _parentImage;
     [SerializeField] private Platform _currentPlatform;
     [SerializeField] private BallMover _ballMover;
-    private SpriteRenderer _sprite;
+    private Layer _layer;
+
+
+    private void Awake()
+    {
+        _layer = transform.parent.GetComponent<Layer>();
+    }
 
 
     private void OnEnable()
@@ -20,8 +27,22 @@ public class Ball : MonoBehaviour
                 }
             }
         }
+
+        _ballMover.OnFinishJump += InitLayer;
+
     }
 
+
+    private void InitLayer()
+    {
+        if ( _currentPlatform != null && _layer != _currentPlatform.Layer)
+        {
+            _layer.SetActive(false);
+            _layer = _currentPlatform.Layer;
+            _layer.SetActive(true);
+        }
+    }
+    
 
     private void OnDisable()
     {
@@ -35,10 +56,11 @@ public class Ball : MonoBehaviour
                 }
             }
         }
+        _ballMover.OnFinishJump -= InitLayer;
     }
 
 
-    public void TryJump(Platform nextPlatform)
+    private void TryJump(Platform nextPlatform)
     {
         if (_ballMover.IsStart() || _currentPlatform == nextPlatform) return;
 
@@ -84,5 +106,6 @@ public class Ball : MonoBehaviour
                 }
             }
         }
+
     }
 }

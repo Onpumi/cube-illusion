@@ -12,12 +12,12 @@ public class BallMover : MonoBehaviour
     private Vector3 _startPosition;
     private Vector3 _currentPosition;
     private Vector3 _direction;
-    private Platform _nextPlatform;
     private bool _isFinishMove;
     private float _valueCurve;
     private bool _isFall = false;
     public event Action OnFinishGame;
-    //public bool IsFinishJump
+    public event Action OnFinishJump;
+    public bool IsFinishJump { get; private set;  }
 
     
     
@@ -29,12 +29,12 @@ public class BallMover : MonoBehaviour
             new Keyframe(0.5f,1f),
             new Keyframe(1f ,0f)
         });
+        IsFinishJump = false;
 
     }
     public void SetDirection( Platform platform )
     {
         _direction = platform.transform.position - transform.position; 
-        _nextPlatform = platform;
     }
     public void StartJump( Platform platform )
     {
@@ -42,7 +42,7 @@ public class BallMover : MonoBehaviour
         _startPosition = transform.position;
         _currentPosition = _startPosition;
         _isFinishMove = platform.IsFinish;
-        _nextPlatform = platform;
+        IsFinishJump = false;
         if (platform.transform.position.y < transform.position.y)
         {
             _jumpHeight = 0.45f;
@@ -66,6 +66,10 @@ public class BallMover : MonoBehaviour
         }
         else
         {
+            IsFinishJump = true;
+            
+            OnFinishJump?.Invoke();
+            
             if (_isFinishMove)
             {
                 OnFinishGame?.Invoke();
@@ -80,7 +84,6 @@ public class BallMover : MonoBehaviour
     private void Update()
     {
         Jump();
-        //FinishJump();
     }
     
 }
