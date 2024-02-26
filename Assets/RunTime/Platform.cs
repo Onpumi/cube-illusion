@@ -1,49 +1,41 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] private Ball _ball;
-    [SerializeField] private BallMover _ballMover;
     [SerializeField] private float _maxAllowDistanceForJump;
     [SerializeField] private bool _isFinish = false;
-    public SpriteRenderer SpriteRenderer { get; private set; }
+    private Ball _ball;
+    private BallMover _ballMover;
+    private Button _button;
+    private Image _image;
     public int SortingOrder { get; private set;  }
     public bool IsFinish => _isFinish;
+    public event Action<Platform> OnClickButton; 
 
     private void Awake()
     {
-        if( SpriteRenderer == null )
-         SpriteRenderer = GetComponent<SpriteRenderer>();
-        SortingOrder = SpriteRenderer.sortingOrder;
-        transform.parent.GetComponent<SpriteRenderer>().sortingOrder = SortingOrder;
+        _button = GetComponent<Button>();
+        _image = GetComponent<Image>();
+        _image.alphaHitTestMinimumThreshold = 0.5f;
     }
 
-    public void SetColor( Color color )
+
+    private void OnEnable()
     {
-        if( SpriteRenderer == null )
-            SpriteRenderer = GetComponent<SpriteRenderer>();
-
-        SpriteRenderer.color = color;
+        _button.onClick.AddListener(Jump);
+        _image.color = transform.parent.GetComponent<Image>().color;
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void Jump()
     {
-        if (collider.TryGetComponent(out Ball ball) && ball.transform.position.y > transform.position.y + 0.3f && ball.CurrentPlatform != this 
-            
-            )
-        {
-            ball.SetSortingSprite(this);
-        }
+        
+       OnClickButton.Invoke(this);
     }
-
-    private void OnMouseDown()
-    {
-        if (TestAllowLayerJump(_ball)) return;
-        if( Vector3.Distance(_ball.transform.position,transform.position) < _maxAllowDistanceForJump  )
-         _ball.TryJump( this );
-    }
+ 
+  
 
     private bool TestAllowLayerJump( Ball ball )
     {

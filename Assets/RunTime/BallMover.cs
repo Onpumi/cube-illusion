@@ -4,18 +4,25 @@ using UnityEngine;
 public class BallMover : MonoBehaviour
 {
 
+    private const float DeltaValue = 0.001f;
     private AnimationCurve _jumpCurve;
-    private float _jumpTime = 0.5f;
+    private float _jumpTime = 1f;
     private float _time;
-    private float _height = 10;
-    private float _jumpHeight = 0.5f;
+    private float _height = 10f;
+    private float _jumpHeight = 5f;
     private Vector3 _startPosition;
     private Vector3 _currentPosition;
     private Vector3 _direction;
     private Platform _nextPlatform;
     private bool _isFinishMove;
-
+    private int _lengthCurveKeys;
+    private float _valueCurve;
+    private float _prevValueCurve;
+    private bool _isFall = false;
     public event Action OnFinishGame;
+
+    private bool IsMaxHeight => Mathf.Abs(_valueCurve - 0.5f) < DeltaValue;
+    
     
     private void Awake()
     {
@@ -26,10 +33,12 @@ public class BallMover : MonoBehaviour
             new Keyframe(1f ,0f)
         });
 
+        _lengthCurveKeys = _jumpCurve.keys.Length;
+
     }
     public void SetDirection( Platform platform )
     {
-        _direction = platform.transform.position + Vector3.up * platform.transform.localScale.y * 0.15f - transform.position;
+        _direction = platform.transform.position - transform.position; // + Vector3.up * platform.transform.localScale.y * 0.25f - transform.position;
         _nextPlatform = platform;
     }
     public void StartJump( Platform platform )
@@ -41,11 +50,11 @@ public class BallMover : MonoBehaviour
         _nextPlatform = platform;
         if (platform.transform.position.y < transform.position.y)
         {
-            _jumpHeight = 0.3f;
+            _jumpHeight = 1f;
         }
         else
         {
-            _jumpHeight = 0.5f;
+            _jumpHeight = 1f;
         }
     }
 
@@ -67,22 +76,29 @@ public class BallMover : MonoBehaviour
     
     private void Jump()
     {
-        float value;
-
         if( _time > 0f)
         {
             _time-= Time.deltaTime;
-            value = _jumpCurve.Evaluate((_jumpTime - _time) / _jumpTime) * _jumpHeight;
-            _currentPosition += _direction * Time.deltaTime * 2f;
-            transform.position = _currentPosition + (Vector3.up) * value;
+            _valueCurve = _jumpCurve.Evaluate((_jumpTime - _time) / _jumpTime) * _jumpHeight;
+            
+            _currentPosition += _direction * Time.deltaTime * 1f;
+            transform.position = _currentPosition + (Vector3.up) * _valueCurve;
+
+         
+            _prevValueCurve = _valueCurve;
+
         }
         
     }
 
+    public bool IsFall() => (_time < _jumpTime * 0.5f && _time > 0);
+        
+    
 
     private void Update()
     {
         Jump();
+        
         FinishJump();
     }
     
