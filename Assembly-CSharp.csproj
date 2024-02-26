@@ -56,10 +56,10 @@
      <Compile Include="Assets\RunTime\Platform.cs" />
      <Compile Include="Assets\RunTime\ExitButton.cs" />
      <Compile Include="Assets\RunTime\BallMover.cs" />
+     <Compile Include="Assets\RunTime\Layer.cs" />
      <Compile Include="Assets\RunTime\Ball.cs" />
      <Compile Include="Assets\RunTime\GameController.cs" />
      <Compile Include="Assets\RunTime\WindowsWin.cs" />
-     <Compile Include="Assets\RunTime\Layer.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

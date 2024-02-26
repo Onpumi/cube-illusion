@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Ball : MonoBehaviour
 {
@@ -8,15 +6,11 @@ public class Ball : MonoBehaviour
     [SerializeField] private Platform _currentPlatform;
     [SerializeField] private BallMover _ballMover;
     private SpriteRenderer _sprite;
-    public int SortingOrder { get; private set; }
-    public Vector3 NextPosition { get; private set; }
-    public Platform CurrentPlatform => _currentPlatform;
 
 
     private void OnEnable()
     {
-
-        foreach ( Transform child in _parentImage)
+        foreach (Transform child in _parentImage)
         {
             foreach (Transform cubeTransform in child)
             {
@@ -24,16 +18,14 @@ public class Ball : MonoBehaviour
                 {
                     cube.Platform.OnClickButton += TryJump;
                 }
-                
             }
         }
-        
     }
 
 
     private void OnDisable()
     {
-        foreach ( Transform child in _parentImage)
+        foreach (Transform child in _parentImage)
         {
             foreach (Transform cubeTransform in child)
             {
@@ -41,7 +33,6 @@ public class Ball : MonoBehaviour
                 {
                     cube.Platform.OnClickButton -= TryJump;
                 }
-                
             }
         }
     }
@@ -49,36 +40,49 @@ public class Ball : MonoBehaviour
 
     public void TryJump(Platform nextPlatform)
     {
-        
-        if (_ballMover.IsStart() ||  _currentPlatform == nextPlatform ) return;
-        _currentPlatform = nextPlatform;
+        if (_ballMover.IsStart() || _currentPlatform == nextPlatform) return;
 
+        Debug.Log(Vector2.Distance(_ballMover.transform.position, nextPlatform.transform.position));
+        if (Vector2.Distance(_ballMover.transform.position, nextPlatform.transform.position) > 0.9f) return;
+
+        _currentPlatform = nextPlatform;
         _ballMover.SetDirection(nextPlatform);
         _ballMover.StartJump(nextPlatform);
-        
     }
 
     public void SetSortingSprite(Platform nextPlatform)
     {
-        
-        transform.SetSiblingIndex(nextPlatform.transform.parent.GetSiblingIndex()+1);
+        transform.SetSiblingIndex(nextPlatform.transform.parent.GetSiblingIndex() + 1);
 
         if (transform.parent != nextPlatform.transform.parent.parent)
         {
+            //if (_ballMover.transform.position.y < nextPlatform.transform.position.y)
             transform.SetParent(nextPlatform.transform.parent.parent);
+            transform.SetAsLastSibling();
         }
-        
     }
-
-   
 
 
     private void Update()
     {
-        //  if (_ballMover.IsFall() && _currentPlatform.SortingOrder < _sprite.sortingOrder)
+        Transform parentTransform = null;
+        if (_currentPlatform != null)
+            parentTransform = _currentPlatform.transform.parent.parent;
         if (_ballMover.IsFall())
         {
             SetSortingSprite(_currentPlatform);
+        }
+        else
+        {
+            if (_currentPlatform != null && transform.parent != parentTransform)
+            {
+                if (_currentPlatform.transform.position.y > _ballMover.transform.position.y)
+                {
+                    if (_ballMover.transform.GetSiblingIndex() < parentTransform.GetSiblingIndex())
+                        transform.SetParent(_currentPlatform.transform.parent.parent);
+                    transform.SetAsLastSibling();
+                }
+            }
         }
     }
 }
