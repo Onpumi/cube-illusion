@@ -62,6 +62,8 @@ public class Ball : MonoBehaviour
 
     private void TryJump(Platform nextPlatform)
     {
+        
+        
         if (_ballMover.IsStart() || _currentPlatform == nextPlatform) return;
 
         Debug.Log(Vector2.Distance(_ballMover.transform.position, nextPlatform.transform.position));
@@ -90,7 +92,7 @@ public class Ball : MonoBehaviour
         Transform parentTransform = null;
         if (_currentPlatform != null)
             parentTransform = _currentPlatform.transform.parent.parent;
-        if (_ballMover.IsFall())
+        if (_ballMover.IsFall)
         {
             SetSortingSprite(_currentPlatform);
         }

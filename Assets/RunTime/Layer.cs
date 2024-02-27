@@ -4,6 +4,7 @@ using UnityEngine;
 public class Layer : MonoBehaviour
 {
     [SerializeField] private Color _color = Color.white;
+    [SerializeField] private float _transparency = 0.5f;
     public Color Color => _color;
     private List<Cube> _cubes;
     private bool _isActive = false;
@@ -28,7 +29,7 @@ public class Layer : MonoBehaviour
     public void SetActive(bool value)
     {
 
-        var valueAlpha = (value) ? (1f) : (0.2f);
+        var valueAlpha = (value) ? (1f) : (_transparency);
         _isActive = value;
         
         foreach (Cube cube in _cubes)

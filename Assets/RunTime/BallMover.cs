@@ -3,12 +3,10 @@ using UnityEngine;
 
 public class BallMover : MonoBehaviour
 {
-
     private AnimationCurve _jumpCurve;
-    private float _jumpTime = 1f;
+    private readonly float _jumpTime = 0.5f;
     private float _time;
-    private float _height = 10f;
-    private float _jumpHeight = 5f;
+    private float _jumpHeight = 0.45f;
     private Vector3 _startPosition;
     private Vector3 _currentPosition;
     private Vector3 _direction;
@@ -17,73 +15,67 @@ public class BallMover : MonoBehaviour
     private bool _isFall = false;
     public event Action OnFinishGame;
     public event Action OnFinishJump;
-    public bool IsFinishJump { get; private set;  }
+    public bool IsFinishJump { get; private set; }
 
-    
-    
+
     private void Awake()
     {
-        _jumpCurve = new AnimationCurve(new Keyframe[3]{
- 
-            new Keyframe(0f ,0f),
-            new Keyframe(0.5f,1f),
-            new Keyframe(1f ,0f)
+        _jumpCurve = new AnimationCurve(new Keyframe[3]
+        {
+            new Keyframe(0f, 0f),
+            new Keyframe(_jumpTime * 0.5f, 1f),
+            new Keyframe(_jumpTime, 0f)
         });
         IsFinishJump = false;
+    }
 
-    }
-    public void SetDirection( Platform platform )
+    public void SetDirection(Platform platform)
     {
-        _direction = platform.transform.position - transform.position; 
+        _direction = platform.transform.position - transform.position;
+        _direction /= _jumpTime;
     }
-    public void StartJump( Platform platform )
+
+    public void StartJump(Platform platform)
     {
         _time = _jumpTime;
         _startPosition = transform.position;
         _currentPosition = _startPosition;
         _isFinishMove = platform.IsFinish;
         IsFinishJump = false;
-        if (platform.transform.position.y < transform.position.y)
-        {
-            _jumpHeight = 0.45f;
-        }
-        else
-        {
-            _jumpHeight = 0.45f;
-        }
     }
 
-    public bool IsStart() => _time > 0;
+    public bool IsStart() => _time > _jumpTime * (1f-_jumpTime);
+//    public bool IsStart() => _time > 0;
 
     private void Jump()
     {
-        if( _time > 0f)
+        //if( _time > 0)
+        if (_time > (1f-_jumpTime) * (_jumpTime))
         {
-            _time-= Time.deltaTime;
+            _time -= (Time.deltaTime * _jumpTime);
             _valueCurve = _jumpCurve.Evaluate((_jumpTime - _time) / _jumpTime) * _jumpHeight;
-            _currentPosition += _direction * Time.deltaTime * 1f;
+            _currentPosition += _direction * Time.deltaTime;
             transform.position = _currentPosition + (Vector3.up) * _valueCurve;
         }
         else
         {
             IsFinishJump = true;
-            
+
             OnFinishJump?.Invoke();
-            
+
             if (_isFinishMove)
             {
                 OnFinishGame?.Invoke();
             }
         }
-        
     }
 
-    public bool IsFall() => (_time < _jumpTime * 0.5f && _time > 0);
-        
+    //public bool IsFall() => (_time < _jumpTime * 0.5f && _time > 0);
+    public bool IsFall => (_time < _jumpTime * (1-_jumpTime*_jumpTime)  && _time > (_jumpTime)* (1f-_jumpTime));
+
 
     private void Update()
     {
-        Jump();
+            Jump();
     }
-    
 }
